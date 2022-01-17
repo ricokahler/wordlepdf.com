@@ -1,0 +1,19 @@
+{
+  "name": "Wordle PDF",
+  "short_name": "Wordle PDF",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F15642",
+  "background_color": "#F15642",
+  "display": "browser"
+}
