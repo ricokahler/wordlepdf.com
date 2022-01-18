@@ -59,7 +59,8 @@ const squares = {
 export function parseState(searchParams: URLSearchParams): GameState {
   const serializedState = searchParams.get('state') || '';
   const lastTimePlayed =
-    searchParams.get('lastTimePlayed') || new Date().toISOString();
+    searchParams.get('lastTimePlayed') ||
+    new Date(new Date().setHours(0, 0, 0, 0)).toISOString();
 
   const solution = getSolution(new Date(lastTimePlayed));
   const wordleNumber = getWordleNumber(new Date(lastTimePlayed));

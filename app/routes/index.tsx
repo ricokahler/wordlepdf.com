@@ -1,4 +1,4 @@
-import { LoaderFunction } from 'remix';
+import { LoaderFunction, HeadersFunction } from 'remix';
 import { renderToStream } from '@react-pdf/renderer';
 import { parseState } from '../parse-state';
 import { WordleDocument } from '../wordle-document';
@@ -17,13 +17,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   const pdf = await renderToStream(
     <WordleDocument {...parseState(url.searchParams)} />,
   );
-
   const buffer = await streamToBuffer(pdf);
+  const thirtyDays = 30 * 24 * 60 * 60;
 
   return new Response(buffer, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
+      'Cache-Control': `max-age=${thirtyDays}, s-maxage=${thirtyDays}`,
     },
   });
 };
